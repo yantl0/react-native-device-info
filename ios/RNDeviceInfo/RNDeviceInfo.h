@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
+
+#if __has_include(<React/RCTAssert.h>)
 #import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
-#import <React/RCTLog.h>
+#else
+#import "RCTBridgeModule.h"
+#endif
 
-@interface RNDeviceInfo : RCTEventEmitter <RCTBridgeModule>
-
-@property (nonatomic) float lowBatteryThreshold;
+@interface RNDeviceInfo : NSObject <RCTBridgeModule>
 
 @end
